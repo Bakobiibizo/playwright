@@ -1,0 +1,11 @@
+node_modules
+.venv
+.env
+data
+__pycache__
+.vscode 
+tests/*
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
