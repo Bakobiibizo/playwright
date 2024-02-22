@@ -1,4 +1,3 @@
-import { test } from '@playwright/test';
 import { BasePage } from './base-page';
 import * as fs from 'fs';
 
@@ -31,7 +30,15 @@ export class BaseExecutor extends BasePage {
         return this.extractedSteps
     }
     async executeAction(step: string) {
-        await this.extractedSteps.evaluate(step)
+        try {
+            if (step.includes(this.searchString)) {
+                await this.extractedSteps.evaluate(step)
+            } else {
+                console.log(step)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
     async executeTest(testSteps: string) {
         const steps = await this.testExtractor(testSteps)

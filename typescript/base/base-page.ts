@@ -1,5 +1,5 @@
 import { Page, webkit } from 'playwright/test';
-import { Actions, baseActions, Options, type ActionFunction } from './base-actions';
+import { Actions, baseActions, Options, type ActionFunction } from '../../depreciated/base-actions';
 
 export class BasePage {
     actions: Actions
