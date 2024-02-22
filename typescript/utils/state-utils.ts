@@ -1,7 +1,7 @@
 import { ENV_ENUM, TestingEnvironments } from "../base/base-environment";
 import { Page } from "@playwright/test";
 
-const env = new TestingEnvironments(ENV_ENUM.local).env;
+const { env } = new TestingEnvironments(ENV_ENUM.local);
 
 export async function State(page: Page) {
 

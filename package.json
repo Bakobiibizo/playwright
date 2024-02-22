@@ -2,9 +2,9 @@
   "name": "playwright_engine",
   "version": "1.0.0",
   "description": "playwright automation",
-  "main": "services/index.js",
   "scripts": {
     "start": "ts-node services/index.ts",
+    "test": "npx playwright test",
     "dev": "nodemon ts-node services/index.ts"
   },
   "keywords": [],
@@ -23,6 +23,8 @@
     "@anthropic-ai/sdk": "^0.10.0",
     "@babel/parser": "^7.23.6",
     "@babel/traverse": "^7.23.7",
+    "@types/jest": "^29.5.12",
+    "@types/mocha": "^10.0.6",
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
     "openai": "^4.24.1",
