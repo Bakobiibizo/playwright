@@ -1,5 +1,5 @@
 import { Page, webkit } from 'playwright/test';
-import { Actions, baseActions, Options, type ActionFunction } from '../../depreciated/base-actions';
+import { Actions, baseActions } from '../../depreciated/base-actions';
 
 export class BasePage {
     actions: Actions
@@ -9,7 +9,7 @@ export class BasePage {
         this.page = this.launchPage(url)
     }
     launchPage(url: string): Promise<Page> {
-        return webkit.launch({ headless: false }).then(async browser => {
+        return webkit.launch({ headless: true }).then(async browser => {
             const page = await browser.newPage();
             await page.goto(url);
             return page

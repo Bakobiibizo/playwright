@@ -14,16 +14,15 @@ export class BaseExecutor extends BasePage {
         const test_data = fs.readFileSync(testStepsPath, 'utf-8')
 
         const lines: string[] = test_data.toString().split('\n')
-
         const steps = []
-
         for (let i = 0; i < lines.length; i++) {
-            if (lines[i].includes(this.searchString)) {
+            try {
+                if (lines[i].includes(this.searchString)) {
+                    steps.push(lines[i])
+                }
+            } catch (error) {
                 console.log(lines[i])
-            }
-            if (lines[i].includes(this.searchString)) {
-                steps.push(lines[i])
-                console.log(`${i} ${lines[i]}`)
+                console.log(error)
             }
         }
         this.extractedSteps = steps
@@ -31,11 +30,15 @@ export class BaseExecutor extends BasePage {
     }
     async executeAction(step: string) {
         try {
-            if (step.includes(this.searchString)) {
-                await this.extractedSteps.evaluate(step)
-            } else {
-                console.log(step)
+            const actionArray: string[] = step.split('.')
+            const action: string = actionArray[1]
+            const selector: string = actionArray[2].replace('(', '').replace(')', '')
+
+            if (actionArray[3]) {
+                actionArray[3] = actionArray[3].replace('(', '').replace(')', '')
             }
+
+            await this.actions[action](await this.page, selector, actionArray[3])
         } catch (error) {
             console.log(error)
         }
