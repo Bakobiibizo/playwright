@@ -4,6 +4,9 @@ A frame work to transform brittle code gen tests into robust fixtures and select
 
 ## Installing 
 
+
+`sudo apt install libmanette-0.2-dev libwoff-dev libharfbuzz-dev libavif-dev libenchant-2-dev libhyphen-dev libgstreamer-plugins-bad1.0-dev libsecret-1-dev librust-graphene-sys-dev  libgtk-4-1`
+
 `\(p\)npm install`
 
 `\(p\)npx playwright install`
